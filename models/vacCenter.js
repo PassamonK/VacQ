@@ -7,9 +7,10 @@ const VacCenter = function (vacCenter) {
   this.tel = vacCenter.tel;
 };
 VacCenter.getAll = (result) => {
+  console.log("hello");
   sql.query("SELECT * FROM vacCenters", (err, res) => {
     if (err) {
-      console.log("error:", err);
+      console.log("error: ", err);
       result(null, err);
       return;
     }

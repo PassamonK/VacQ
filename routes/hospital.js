@@ -9,10 +9,13 @@ const {
   createHospital,
   updateHospitals,
   deleteHospital,
+  getVacCenters,
 } = require("../controllers/hospital");
 
 const appointmentRouter = require("./appointments");
 router.use("/:hospitalId/appointments/", appointmentRouter);
+
+router.route("/vacCenters").get(getVacCenters);
 
 router
   .route("/")

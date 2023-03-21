@@ -1,4 +1,19 @@
 const Hospital = require("../models/Hospital");
+const vacCenter = require("../models/VacCenter");
+
+exports.getVacCenters = (req, res, next) => {
+  vacCenter.getAll((err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message ||
+          "Some error occurred while retrieving Vaccine Centers.",
+      });
+    else {
+      res.send(data);
+    }
+  });
+};
 
 exports.getHospitals = async (req, res, next) => {
   let query;
@@ -102,12 +117,10 @@ exports.deleteHospital = async (req, res, next) => {
   try {
     const hospital = await Hospital.findById(req.params.id);
     if (!hospital)
-      return res
-        .status(404)
-        .json({
-          success: false,
-          message: `Bootcamp not found with id of ${req.params.id}`,
-        });
+      return res.status(404).json({
+        success: false,
+        message: `Bootcamp not found with id of ${req.params.id}`,
+      });
 
     hospital.remove();
     res.status(200).json({ success: true, data: {} });
