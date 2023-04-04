@@ -1,7 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
-const hospitals = require("./routes/hospitals");
+const hospitals = require("./routes/hospital");
 const auth = require("./routes/auth");
 const appointments = require("./routes/appointments");
 const cookieParser = require("cookie-parser");
@@ -42,7 +42,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: "http://localhost:3000/api/v1",
+        url: "http://localhost:5000/api/v1",
       },
     ],
   },
