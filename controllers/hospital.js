@@ -1,5 +1,5 @@
 const Hospital = require("../models/Hospital");
-const vacCenter = require("../models/VacCenter");
+const vacCenter = require("../models/vacCenter");
 
 exports.getVacCenters = (req, res, next) => {
   vacCenter.getAll((err, data) => {
